@@ -21,7 +21,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-k&iq0o)y6w$#&^eb18pxdg*oxk5$do@p8z#bk%4of-g0ssp4i8'
+
+SECRET_KEY = os.getenv('SECRET_KEY', 'Optional default value')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -73,6 +75,9 @@ ROOT_URLCONF = 'social_login.urls'
 AUTHENTICATION_BACKENDS = (
     "allauth.account.auth_backends.AuthenticationBackend",
 )
+
+SOCIAL_AUTH_GITHUB_KEY = os.getenv('SOCIAL_AUTH_GITHUB_KEY', 'Optional default value')
+SOCIAL_AUTH_GITHUB_SECRET = os.getenv('SOCIAL_AUTH_GITHUB_SECRET', 'Optional default value')
 
 SITE_ID = 1
 ACCOUNT_EMAIL_VERIFICATION = "none"
